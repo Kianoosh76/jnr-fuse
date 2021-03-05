@@ -41,6 +41,7 @@ public class HelloFuse extends FuseStubFS {
 
     @Override
     public int readdir(String path, Pointer buf, FuseFillDir filter, @off_t long offset, FuseFileInfo fi) {
+        System.out.println("this is coalled");
         if (!"/".equals(path)) {
             return -ErrorCodes.ENOENT();
         }
