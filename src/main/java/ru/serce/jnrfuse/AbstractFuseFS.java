@@ -167,14 +167,14 @@ public abstract class AbstractFuseFS implements FuseFS {
         if (isImplemented("opendir")) {
             fuseOperations.opendir.set((path, fi) -> fuse.opendir(path, FuseFileInfo.of(fi)));
         }
-        if (isImplemented("readdir")) {
-            fuseOperations.readdir.set((path, buf, filter, offset, fi) -> {
-                ClosureHelper helper = ClosureHelper.getInstance();
-                FromNativeConverter<FuseFillDir, Pointer> conveter = helper.getNativeConveter(FuseFillDir.class);
-                FuseFillDir filterFunc = conveter.fromNative(filter, helper.getFromNativeContext());
-                return fuse.readdir(path, buf, filterFunc, offset, FuseFileInfo.of(fi));
-            });
-        }
+//        if (isImplemented("readdir")) {
+//            fuseOperations.readdir.set((path, buf, filter, offset, fi) -> {
+//                ClosureHelper helper = ClosureHelper.getInstance();
+//                FromNativeConverter<FuseFillDir, Pointer> conveter = helper.getNativeConveter(FuseFillDir.class);
+//                FuseFillDir filterFunc = conveter.fromNative(filter, helper.getFromNativeContext());
+//                return fuse.readdir(path, buf, filterFunc, offset, FuseFileInfo.of(fi));
+//            });
+//        }
         if (isImplemented("releasedir")) {
             fuseOperations.releasedir.set((path, fi) -> fuse.releasedir(path, FuseFileInfo.of(fi)));
         }
