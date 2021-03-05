@@ -306,6 +306,7 @@ public class MemoryFS extends FuseStubFS {
 
     @Override
     public int readdir(String path, Pointer buf, FuseFillDir filter, @off_t long offset, FuseFileInfo fi) {
+        System.out.println("this is coalled2");
         MemoryPath p = getPath(path);
         if (p == null) {
             return -ErrorCodes.ENOENT();
