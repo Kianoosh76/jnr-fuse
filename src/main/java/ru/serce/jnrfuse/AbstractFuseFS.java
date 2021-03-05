@@ -175,6 +175,9 @@ public abstract class AbstractFuseFS implements FuseFS {
                 return fuse.readdir(path, buf, filterFunc, offset, FuseFileInfo.of(fi));
             });
         }
+        else {
+            System.out.println("sorry there is no readdir");
+        }
         if (isImplemented("releasedir")) {
             fuseOperations.releasedir.set((path, fi) -> fuse.releasedir(path, FuseFileInfo.of(fi)));
         }
