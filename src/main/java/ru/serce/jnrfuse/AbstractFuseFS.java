@@ -168,6 +168,7 @@ public abstract class AbstractFuseFS implements FuseFS {
             fuseOperations.opendir.set((path, fi) -> fuse.opendir(path, FuseFileInfo.of(fi)));
         }
         if (isImplemented("readdir")) {
+            System.out.println("there is a readdir");
             fuseOperations.readdir.set((path, buf, filter, offset, fi) -> {
                 ClosureHelper helper = ClosureHelper.getInstance();
                 FromNativeConverter<FuseFillDir, Pointer> conveter = helper.getNativeConveter(FuseFillDir.class);
